@@ -18,6 +18,14 @@ GEN.color1_array = [
   "#BA8110",
   "#8E723A",
   "#325533",
+  "#65461E",
+  "#844E08",
+  "#643A10",
+  "#864401",
+  "#C39A49",
+  "#5C4C2C",
+
+
 ];
 GEN.color2_array = [
   "#50B753",
@@ -34,6 +42,15 @@ GEN.color2_array = [
   "#69E469",
   "#347334",
   "#DF6CD0",
+  "#F06330",
+  "#E8A062",
+  "#5C842F",
+  "#306E4F",
+  "#F0539C",
+  "#3E5526",
+  "#306E4F",
+  "#0E6B04",
+  "#608E10",
 ];
 
 function Init() {
@@ -51,7 +68,8 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   GEN.ctx.save();
   GEN.ctx.strokeStyle = color1;
   GEN.ctx.fillStyle = color2;
-  GEN.ctx.shadowBlur = 10 + Math.floor(Math.random() * 5);
+
+  GEN.ctx.shadowBlur = 7 + Math.floor(Math.random() * 8);
   GEN.ctx.shadowColor = "black";
   GEN.ctx.lineWidth = branchWidth;
   GEN.ctx.translate(startX, startY);
@@ -68,6 +86,7 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   if (len < 15) {
     GEN.ctx.beginPath();
     GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI / 2);
+    GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI/8 );
     GEN.ctx.fill();
     GEN.ctx.restore();
     return;
@@ -114,11 +133,11 @@ function Genrator() {
     GEN.curve = Math.random() * 20 + 5;
   }
 
-  GEN.curve2 = Math.random() * 45 + 1;
+  GEN.curve2 = Math.random() * 15 + 1;
   let angle = 0;
-  let branchWidth = Math.random() * 55 + 10;
+  let branchWidth = Math.random() * 40 + 20;
 
-  if (Math.random() > 0.5) {
+  if (Math.random() > 0.88) {
     GEN.ctx.globalCompositeOperation = "destination-over";
   } else {
     GEN.ctx.globalCompositeOperation = "source-over";
@@ -129,7 +148,7 @@ function Genrator() {
   let color2 =
     GEN.color2_array[Math.floor(Math.random() * GEN.color2_array.length)];
   GEN.generateButton.style.background = color1;
-  GEN.leafDense = Math.floor(Math.random() * 30) + 15;
+  GEN.leafDense = Math.floor(Math.random() * 18) + 15;
   drawTree(
     center,
     GEN.canvas.height - 80,
