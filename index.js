@@ -83,7 +83,7 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   }
   GEN.ctx.stroke();
 
-  if (len < 15) {
+  if (len < 12) {
     GEN.ctx.beginPath();
     GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI / 2);
     GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI/8 );
@@ -96,10 +96,14 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   if (Math.random() > 0.5) {
     off = -1;
   }
-  drawTree(0, -len, len * 0.75, angle + GEN.curve, branchWidth * 0.75);
-  drawTree(0, -len, len * 0.75, angle - GEN.curve, branchWidth * 0.64);
+  let num1=(550+Math.random()*230)/1000
+  let num2=(550+Math.random()*230)/1000
+  let num3=(550+Math.random()*230)/1000
+  drawTree(0, -len, len * 0.75, angle + GEN.curve, branchWidth * num1);
+  drawTree(0, -len, len * 0.75, angle - GEN.curve, branchWidth * num2);
+
   if (Math.random() > 0.75) {
-    drawTree(0, -len, len * 0.75, angle + off * GEN.curve, branchWidth * 0.7);
+    drawTree(0, -len, len * 0.75, angle + off * GEN.curve, branchWidth * num3);
   }
   GEN.ctx.restore();
 }
