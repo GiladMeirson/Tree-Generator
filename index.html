@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://kit.fontawesome.com/d93af1fc51.js" crossorigin="anonymous"></script>
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="index.css">
+        <title>Document</title>
+        <script src="index.js"></script>
+
+    </head>
+    <body onload="Init()">
+
+        <canvas></canvas>
+        <div id="creditInfo">
+            <p>Created by  <span style="font-size: 18px;">&copy Gilad Meirson &copy</span></p>
+            <i onclick="InfoModal()" id="info" class="fa fa-info-circle" style="margin-left: 5px;"></i>
+        </div>
+        <button id="GenreatorBTN" onclick="Genrator()" class='generate-tree-button'> <i class="fa-solid fa-tree"></i> Generate
+            Random Tree</button>
+        <button id="DisplayBtn" onclick="displayImage(this)"> <i class="fas fa-cloud"></i> Convert to Image.png</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="DisplayImg">
+                    <h3>your Image:</h3>
+                    <img id="ResImage" src="" alt="Here Will be your img"
+                        aria-placeholder="Here Will be your img">
+                        <button onclick="DownloadIMG()" id="DownloadBTN"><i class="fa-solid fa-cloud-arrow-down"></i>  Download as png file</button>
+
+                </div>
+            </div>
+
+        </div>
+
+               <!-- The Modal -->
+               <div id="myModal2" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="contentInfo">
+                        <hr>
+                        <br>
+                        <h2 style="font-size: 34px;">-INFO-</h2>
+                        <br><br>
+                        <p style="text-align: justify;font-size: 24px;">The main goal of the project is to create trees in a random but real way.
+                            There is the possibility to convert the painting on the canvas to a PNG image file, this is in order to train a neural network whose purpose is to identify regular patterns in plants.
+                            The Generator
+                            The generator I built knows how to produce patterns while using recursive functions, in this version the initial values ​​are drawn and then rely on patterns of nature
+                        </p>
+                        <br>
+                        <br>
+                        <p>The Main draw algorithm:</p>
+                        <hr>
+                        <p style="text-align: left;" >function Genrator() {<br>
+                            GEN.ctx.clearRect(0, 0, GEN.canvas.width, GEN.canvas.height);<br>
+                            let center = GEN.canvas.width / 2;<br>
+                            let len = 0;<br>
+                          
+                            if (window.innerWidth < 600) {<br>
+                              len = Math.floor(Math.random() * 20) + 120;<br>
+                              GEN.curve = Math.random() * 7 + 3;<br>
+                            } else {<br>
+                              len = Math.floor(Math.random() * 40) + 180;<br>
+                              GEN.curve = Math.random() * 20 + 5;<br>
+                            }
+                          
+                            GEN.curve2 = Math.random() * 45 + 1;<br>
+                            let angle = 0;<br>
+                            let branchWidth = Math.random() * 55 + 10;<br>
+                          
+                            if (Math.random() > 0.5) {<br>
+                              GEN.ctx.globalCompositeOperation = "destination-over";<br>
+                            } else {<br>
+                              GEN.ctx.globalCompositeOperation = "source-over";<br>
+                            }
+                            <br>
+                            let color1 =<br>
+                              GEN.color1_array[Math.floor(Math.random() * GEN.color1_array.length)];<br>
+                            let color2 =<br>
+                              GEN.color2_array[Math.floor(Math.random() * GEN.color2_array.length)];<br>
+                            GEN.generateButton.style.background = color1;<br>
+                            GEN.leafDense = Math.floor(Math.random() * 30) + 15;<br>
+                            drawTree(
+                              center,
+                              GEN.canvas.height - 80,
+                              len,
+                              angle,
+                              branchWidth,
+                              color1,
+                              color2
+                            );<br>
+                          }</p>
+                          <hr>
+                        <br>
+                        <br>
+                        <p>This project include Canvas5 api</p>
+                        <p>Created by Gilad Meirson for any questions contact me in the link below</p>
+                        <a target="_blank" href="https://giladmeirson.github.io/Gilad_Meirson/">contact me on my website</a>
+                        <br>
+                        <br>
+                        <hr>
+                    </div>
+                </div>
+    
+            </div>
+
+  
+
+    </body>
+</html>
