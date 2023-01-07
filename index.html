@@ -10,7 +10,7 @@
         <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <link rel="stylesheet" href="index.css">
-        <title>Gilad Meirson-Generaitor</title>
+        <title>Document</title>
         <script src="index.js"></script>
 
     </head>
@@ -20,6 +20,15 @@
         <div id="creditInfo">
             <p>Created by  <span style="font-size: 18px;">&copy Gilad Meirson &copy</span></p>
             <i onclick="InfoModal()" id="info" class="fa fa-info-circle" style="margin-left: 5px;"></i>
+        </div>
+        <div id="auto-download">
+          <hr>
+          <br>
+            <input type="number" name="Amount" min="1" max="50000" maxlength="5" placeholder="Amount.." id="amountIN">
+            <button onclick="AutoDownloadClick()">Start Download automatclly</button>
+            <br>
+            <br>
+            <hr>
         </div>
         <button id="GenreatorBTN" onclick="Genrator()" class='generate-tree-button'> <i class="fa-solid fa-tree"></i> Generate
             Random Tree</button>
