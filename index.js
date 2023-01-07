@@ -24,6 +24,12 @@ GEN.color1_array = [
   "#864401",
   "#C39A49",
   "#5C4C2C",
+  "#645E3F",
+  "#84601E",
+  "#987E48",
+  "#787546",
+  "#723E12",
+
 
 
 ];
@@ -51,6 +57,13 @@ GEN.color2_array = [
   "#306E4F",
   "#0E6B04",
   "#608E10",
+  "#E24827",
+  "#E2BE27",
+  "#E2A527",
+  "#D6A068",
+  "#DCE56E",
+  "#C0B268",
+  "#C2E48A",
 ];
 
 function Init() {
@@ -83,10 +96,12 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   }
   GEN.ctx.stroke();
 
-  if (len < 12) {
+  if (len < 8) {
     GEN.ctx.beginPath();
     GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI / 2);
-    GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI/8 );
+   if (Math.random()>0.8) {
+      GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI/8 );
+   }
     GEN.ctx.fill();
     GEN.ctx.restore();
     return;
@@ -99,11 +114,11 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   let num1=(550+Math.random()*230)/1000
   let num2=(550+Math.random()*230)/1000
   let num3=(550+Math.random()*230)/1000
-  drawTree(0, -len, len * 0.75, angle + GEN.curve, branchWidth * num1);
-  drawTree(0, -len, len * 0.75, angle - GEN.curve, branchWidth * num2);
+  drawTree(0, -len, len * 0.68, angle + GEN.curve, branchWidth * num1);
+  drawTree(0, -len, len * 0.71, angle - GEN.curve, branchWidth * num2);
 
-  if (Math.random() > 0.75) {
-    drawTree(0, -len, len * 0.75, angle + off * GEN.curve, branchWidth * num3);
+  if (Math.random() > 0.65) {
+    drawTree(0, -len, len * 0.55, angle -0.45 * GEN.curve, branchWidth * num3);
   }
   GEN.ctx.restore();
 }
@@ -121,7 +136,7 @@ window.addEventListener("resize", function () {
   //     "brown",
   //     "green"
   //   );
-  Genrator();
+  //Genrator();
 });
 
 function Genrator() {
@@ -133,15 +148,15 @@ function Genrator() {
     len = Math.floor(Math.random() * 20) + 120;
     GEN.curve = Math.random() * 7 + 3;
   } else {
-    len = Math.floor(Math.random() * 40) + 180;
-    GEN.curve = Math.random() * 20 + 5;
+    len = Math.floor(Math.random() * 45) + 200;
+    GEN.curve = Math.random() * 25 + 6;
   }
 
-  GEN.curve2 = Math.random() * 15 + 1;
+  GEN.curve2 = Math.random() * 14 + 5;
   let angle = 0;
   let branchWidth = Math.random() * 40 + 20;
 
-  if (Math.random() > 0.88) {
+  if (Math.random() > 0.95) {
     GEN.ctx.globalCompositeOperation = "destination-over";
   } else {
     GEN.ctx.globalCompositeOperation = "source-over";
@@ -152,7 +167,7 @@ function Genrator() {
   let color2 =
     GEN.color2_array[Math.floor(Math.random() * GEN.color2_array.length)];
   GEN.generateButton.style.background = color1;
-  GEN.leafDense = Math.floor(Math.random() * 18) + 15;
+  GEN.leafDense = Math.floor(Math.random() * 28) + 8;
   drawTree(
     center,
     GEN.canvas.height - 80,
@@ -228,4 +243,40 @@ function InfoModal() {
       $("#myModal2").fadeOut(750);
     }
   };
+}
+
+
+function DownloadAmount(amount) {
+
+  for (let i = 0; i < amount; i++) {
+    
+    Genrator();
+    const dataUri = GEN.canvas.toDataURL();
+    document.getElementById("ResImage").src = dataUri;
+    DownloadIMG();
+    
+  }
+  
+}
+
+function AutoDownloadClick() {
+  let amount=parseInt(document.getElementById('amountIN').value);
+  swal({
+    title: "Are you sure?",
+    text: `${amount} Image files will be download on your computer !`,
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      swal("Okay lets download!", {
+        icon: "success",
+      });
+      DownloadAmount(amount);
+    } else {
+      swal("another time");
+    }
+  });
+  
 }
