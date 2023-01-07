@@ -31,21 +31,20 @@ button {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-#DisplayBtn{
+#DisplayBtn {
     position: absolute;
     z-index: 20;
-    top: 0;
+    top: 5px;
     left: 50%;
     transform: translate(-50%, 0);
-    padding: 20px 30px;
+    padding: 12px 23px;
     border-radius: 50px;
-    background-image: linear-gradient(to right, rgb(136, 219, 98) , rgb(233, 162, 55));
+    background-image: linear-gradient(to right, rgb(214 255 251) , rgb(55 151 233));
     color: black;
     font-family: 'Helvetica', cursive;
     font-size: 20px;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-
 }
 #DownloadBTN{
     padding: 20px 30px;
@@ -102,6 +101,31 @@ button {
 #contentInfo{
     text-align: center;
     margin: 1%;
+}
+#auto-download {
+    position: absolute;
+    bottom: 0vh;
+    margin: 1vh;
+}
+#auto-download input {
+    font-size: 2vh;
+    text-align: center;
+    width: 8vw;
+    border-radius: 15px;
+}
+#auto-download button {
+    padding: 8px 15px;
+    border-radius: 50px;
+    background-image: radial-gradient(circle,  rgb(110, 78, 17) ,  rgb(160, 126, 62),rgb(236, 205, 148));
+    color: black;
+    font-family: 'Helvetica', cursive;
+    font-size: 15px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+#auto-download button:hover{
+    cursor: pointer;
+    background-image: radial-gradient(circle,rgb(236, 205, 148), rgb(160, 126, 62),rgb(110, 78, 17));
 }
 
 /* The Modal (background) */
