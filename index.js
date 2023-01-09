@@ -72,6 +72,7 @@ function Init() {
   GEN.canvas.width = window.innerWidth;
   GEN.canvas.height = window.innerHeight;
   GEN.ctx = GEN.canvas.getContext("2d");
+  GEN.recStop=8;
   swal("Welcome to Generator-plant", "Please wait patiently between creations, it takes a few seconds");
 
 }
@@ -96,7 +97,7 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2) {
   }
   GEN.ctx.stroke();
 
-  if (len < 8) {
+  if (len < GEN.recStop) {
     GEN.ctx.beginPath();
     GEN.ctx.arc(0, -len, GEN.leafDense, 0, Math.PI / 2);
    if (Math.random()>0.8) {
@@ -145,16 +146,26 @@ function Genrator() {
   let len = 0;
 
   if (window.innerWidth < 600) {
-    len = Math.floor(Math.random() * 20) + 120;
-    GEN.curve = Math.random() * 7 + 3;
+    len = Math.floor(Math.random() * 20) + 105;
+    GEN.curve = Math.random() * 11 + 6;
+    var branchWidth = Math.random() * 25 + 10;
+    GEN.recStop=3;
+    GEN.leafDense = Math.floor(Math.random() * 10) + 3;
+    GEN.curve2 = Math.random() * 5 + 5;
+
+
   } else {
     len = Math.floor(Math.random() * 45) + 200;
     GEN.curve = Math.random() * 25 + 6;
+    var branchWidth = Math.random() * 40 + 20;
+    GEN.recStop=8;
+    GEN.leafDense = Math.floor(Math.random() * 28) + 8;
+    GEN.curve2 = Math.random() * 14 + 5;
   }
 
-  GEN.curve2 = Math.random() * 14 + 5;
+  
   let angle = 0;
-  let branchWidth = Math.random() * 40 + 20;
+  
 
   if (Math.random() > 0.95) {
     GEN.ctx.globalCompositeOperation = "destination-over";
@@ -167,7 +178,7 @@ function Genrator() {
   let color2 =
     GEN.color2_array[Math.floor(Math.random() * GEN.color2_array.length)];
   GEN.generateButton.style.background = color1;
-  GEN.leafDense = Math.floor(Math.random() * 28) + 8;
+ 
   drawTree(
     center,
     GEN.canvas.height - 80,
